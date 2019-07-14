@@ -47,3 +47,32 @@ def writeListToFile(vlist, vpath):
 
 
 
+def fileToList(filepath):
+    try:
+        ofile = open(filepath, 'r', encoding = 'utf-8') 
+        data = ofile.read()
+        words = data.split('\n')
+        return words
+    except FileNotFoundError:
+        print("file not found")    
+    except Exception as e:
+        print(e)    
+
+def loadWordPairs(dirDic):
+	dicFiles = os.listdir(dirDic)
+	bigDic = []
+	for fp in dicFiles:
+		bigDic  += fileToList(os.path.join(dirDic, fp))
+
+	dicData = list(dict.fromkeys(bigDic))
+	dicData.sort()
+	return formatData(dicData)
+
+
+def formatData(dicData):
+	outData = []
+	for item in dicData:
+		if(item):
+			pairs = item.split(',')
+			outData.append(pairs[0].strip()+ "_" + pairs[1].strip())
+	return outData

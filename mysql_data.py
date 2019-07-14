@@ -33,3 +33,26 @@ def getWordList():
 		cursor.close
 		db.close
 
+
+def formatPairList(records):
+	wordList = []
+	for item in records:
+		wordList.append(item[0].strip() + '_' + item[1].strip())	
+	return wordList
+
+
+def getPairList():
+	DB_NAME = "lexicon"
+	db = get_connection(DB_NAME)
+	cursor = db.cursor()
+	select_sql= ("SELECT dict_form, word_form FROM  links")
+	try:
+		cursor.execute(select_sql)
+		records = cursor.fetchall()
+		#sreturn records
+		return formatPairList(records)
+	except Exception as e:
+		print("Error encountered:", e)
+	finally:
+		cursor.close
+		db.close

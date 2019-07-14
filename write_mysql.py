@@ -2,7 +2,7 @@ from mysql_handler import upload_data
 from system_handler import  getWordFromTextFile
 
 if __name__ == "__main__":
-	pathIn = "E:/FULLTEXT/SPECIALTY/GENERAL_MATCHING_PAIRS.txt"
+	pathIn = "E:/FULLTEXT/CLEANMAP/Word_Pair_List_2019-07-14.txt"
 	wordPairs = getWordFromTextFile(pathIn)
 
 	dbData = []
