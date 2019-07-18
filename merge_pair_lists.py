@@ -14,7 +14,7 @@ def unpackPairs(pairList):
 
 def processText():
 
-	dirIn = "E:/FULLTEXT/TEMPOUT"
+	dirIn = "E:/FULLTEXT/PAIR/TEMPOUT"
 	#print(pathIn)
 	dirOut = "E:/FULLTEXT/MAPPINGS"
 
