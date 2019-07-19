@@ -1,4 +1,5 @@
 import os, sys
+from datetime import date
 
 def openDir(targetdir):
 	#open directory when done	
@@ -18,12 +19,11 @@ def readTextFile(filepath):
 	    print(e)  
 
 
-def getRawPath(pathIn, dirOut):
-	JSON_EXTENSION = ".json"
-	temp_path = pathIn
-	temp_path = os.path.basename(temp_path)
-	fname, fext = os.path.splitext(temp_path)
-	pathOut =  os.path.join(dirOut, fname + JSON_EXTENSION) 
+def getOutPath(dirOut):
+	today = str(date.today())
+	today = today.replace("-", "")
+	fileName = "Word_Pair_List_" + today + ".txt"
+	pathOut =  os.path.join(dirOut, fileName ) 
 	return(pathOut)
 
 
