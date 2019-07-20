@@ -27,6 +27,13 @@ def getOutPath(dirOut):
 	return(pathOut)
 
 
+def getRawPath(pathIn, dirOut):
+	temp_path = pathIn
+	temp_path = os.path.basename(temp_path)
+	fname, fext = os.path.splitext(temp_path)
+	pathOut =  os.path.join(dirOut, temp_path) 
+	return pathOut
+
 def getWordFromTextFile(filepath):
     try:
         ofile = open(filepath, 'r', encoding = 'utf-8') 
@@ -76,3 +83,9 @@ def formatData(dicData):
 			pairs = item.split(',')
 			outData.append(pairs[0].strip()+ "_" + pairs[1].strip())
 	return outData
+
+
+def loadFormatPairFile(pathIn):
+	pairList = fileToList(pathIn)
+	outList = formatData(pairList)
+	return outList

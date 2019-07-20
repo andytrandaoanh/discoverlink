@@ -1,7 +1,8 @@
 import sys
-from system_handler import openDir
+from system_handler import openDir, getRawPath
+from system_handler import loadFormatPairFile, writeListToFile
 from generate_pair import extractWordPairs
-from merge_pair import mergePairs
+from merge_pair import mergePairs, unpackPairs
 
 
 #TAB 1 FUNCTIONS ================================
@@ -22,8 +23,25 @@ def processTab2(dirIn, dirOut):
 
 
 #TAB 3 FUNCTIONS ================================
-def processTab3(dirClean, dirRaw, dirRecycle):
-	print('dirClean:', dirClean, '\ndirRaw:', dirRaw, '\ndirRecycle:', dirRecycle)
-	#mergePairs(dirIn, dirOut)
-	#openDir(dirOut)
-	#sys.exit()
+def processTab3(pathClean, dirRaw, dirRecycle):
+	#print('pathClean:', pathClean, '\ndirRaw:', dirRaw, '\ndirRecycle:', dirRecycle)
+	
+	pathRaw = getRawPath(pathClean, dirRaw)
+	pathRecycle = getRawPath(pathClean, dirRecycle)	
+
+	#print('pathRaw', pathRaw)
+	#print('\npathRecycle', pathRecycle)
+	
+	contentRaw = loadFormatPairFile(pathRaw)
+	#print(contentRaw)
+	contentClean = loadFormatPairFile(pathClean)
+	#print(contentClean)
+
+	recycleData = [item for item in contentRaw if item not in contentClean]
+	
+	dataOut = unpackPairs(recycleData)
+	#print(dataOut)	
+
+	writeListToFile(dataOut, pathRecycle)
+	openDir(dirRecycle)
+	sys.exit()
