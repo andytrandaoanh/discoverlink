@@ -15,9 +15,13 @@ def unpackPairs(pairList):
 def mergePairs(dirIn, dirOut):
 
 	pathOut = sysHandle.getOutPath(dirOut)
+	
 	#print(pathOut)
 
+	#print('dirIn:', dirIn)
 	bigDict = sysHandle.loadWordPairs(dirIn)
+
+	#print(bigDict)
 	
 	
 	msqlList = getPairList()
