@@ -14,9 +14,9 @@ def processTab1(sDictPath, cDictPath, outputDir):
 
 
 #TAB 2 FUNCTIONS ================================
-def processTab2(dirIn, dirOut):
-	#print('dirIn:', dirIn, '\ndirOut:', dirOut)
-	mergePairs(dirIn, dirOut)
+def processTab2(dirIn, dirOut, dirRecycle):
+	#print('dirIn:', dirIn, '\ndirOut:', dirOut, '\ndirRecycle', dirRecycle)
+	mergePairs(dirIn, dirOut, dirRecycle)
 	openDir(dirOut)
 	sys.exit()
 

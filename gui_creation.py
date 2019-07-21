@@ -117,10 +117,10 @@ class LexGUI:
             cf.set_config_value(cf.RECENT_OUTPUT_DIR2,self.filename21)
 
     def processText2(self):
-        if(self.filepath11.get() and self.filepath21.get()):
-            gui_handler.processTab2 (self.filepath11.get(), self.filepath21.get())
+        if(self.filepath11.get() and self.filepath21.get() and self.filepath43.get()):
+            gui_handler.processTab2 (self.filepath11.get(), self.filepath21.get(), self.filepath43.get())
         else:
-            messagebox.showwarning("Error", "Missing input or output folder")
+            messagebox.showwarning("Error", "Missing input, output or recyle folder")
 
 
   

@@ -12,7 +12,7 @@ def unpackPairs(pairList):
 			outPairs.append(pairs[0].strip() + ', ' + pairs[1].strip())
 	return outPairs
 
-def mergePairs(dirIn, dirOut):
+def mergePairs(dirIn, dirOut, dirRecycle):
 
 	pathOut = sysHandle.getOutPath(dirOut)
 	
@@ -23,12 +23,16 @@ def mergePairs(dirIn, dirOut):
 
 	#print(bigDict)
 	
+	recycleList = sysHandle.loadWordPairs(dirRecycle)	
+	#print(recycleList)
 	
 	msqlList = getPairList()
 	
 	newDict = [item for item in bigDict if item not in msqlList]
 
-	newPairList = unpackPairs(newDict)
+	outDict = [item for item in newDict if item not in recycleList]	
+
+	newPairList = unpackPairs(outDict)
 
 	
 	sysHandle.writeListToFile(newPairList, pathOut)

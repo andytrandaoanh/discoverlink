@@ -1,5 +1,6 @@
 import os, sys
 from datetime import date
+from datetime import datetime
 
 def openDir(targetdir):
 	#open directory when done	
@@ -20,9 +21,10 @@ def readTextFile(filepath):
 
 
 def getOutPath(dirOut):
-	today = str(date.today())
-	today = today.replace("-", "")
-	fileName = "Word_Pair_List_" + today + ".txt"
+
+	now = datetime.now()
+	dateTime = now.strftime("%Y%m%d_%H%M")
+	fileName = "Word_Pair_List_" + dateTime + ".txt"
 	pathOut =  os.path.join(dirOut, fileName ) 
 	return(pathOut)
 
